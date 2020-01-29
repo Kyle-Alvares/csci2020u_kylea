@@ -1,0 +1,15 @@
+sourceCompatibility = 1.0
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Main-Class': 'gradleDemo.demo',
+                    'Implementation-Title': 'Gradle-Demo',
+                    'Implementation-Version': version
+    }
+}
+
+task (minify, dependsOn: 'jar', type proguard.gradle.ProGuardTask) {
+    configuration 'proguard.cfg'
+    injars 'build/libs/lab03-1.0.jar'
+    outjars 'build/libs/Lab03.min.jar'
+}
